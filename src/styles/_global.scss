@@ -1,6 +1,7 @@
 // Global
 .hover-1 {
   position: relative;
+
   &:after {
     content: "";
     position: absolute;
@@ -26,15 +27,18 @@
 .products {
   display: grid;
   grid-template-columns: repeat(4, minmax(300px, 1fr));
+
   .product {
     position: relative;
     border-radius: 4px;
     padding: 1rem;
     margin-bottom: 1rem;
     transition: all 0.3s;
+
     img {
       border-radius: 0.5rem;
     }
+
     .overlay {
       position: absolute;
       top: 0;
@@ -45,6 +49,7 @@
       justify-content: flex-end;
       align-items: flex-end;
     }
+
     .btn_add_to_cart {
       min-width: 35px;
       width: fit-content;
@@ -57,6 +62,7 @@
       transition: all 0.3s ease-in-out;
       margin-bottom: 10px;
       margin-right: 10px;
+
       .btn-text {
         width: 0;
         height: 1rem;
@@ -64,14 +70,70 @@
         overflow: hidden;
         transition: width 750ms ease-in-out;
       }
+
       &:hover {
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
         border-radius: 50rem;
+
         .btn-text {
           width: 82px;
           margin-left: 0.5rem;
         }
+      }
+    }
+  }
+}
+
+.btn_cart {
+  z-index: 10000000;
+  position: fixed;
+  right: 4vh;
+  bottom: 4vh;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid #cdcdcd;
+  z-index: 10000;
+  position: fixed;
+  right: 4vh;
+  bottom: 4vh;
+  width: calc(100% - 8vh);
+  min-width: 280px;
+  max-width: 500px;
+  height: 92vh;
+  overflow: hidden;
+  border-radius: 7px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  transition: box-shadow 135ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 1px 0 rgba(66, 66, 66, 0.08),
+    0 1px 3px 1px rgba(66, 66, 66, 0.16);
+  .cart-body {
+    overflow-y: scroll;
+    flex-grow: 1;
+    .cart-body-item-image {
+      height: 80px;
+      width: 80px;
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: top;
+        border-radius: 0.5rem;
+        overflow: hidden;
       }
     }
   }

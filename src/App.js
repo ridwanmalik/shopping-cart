@@ -1,9 +1,12 @@
 import { FaOpencart } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import Products from "./components/Products";
+import Cart from "./components/Cart";
 
 const App = () => {
   const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
+  const [show, setShow] = useState(false);
   // Fetch Users
   const fetchProduct = async () => {
     try {
@@ -14,6 +17,11 @@ const App = () => {
       console.log(error.message);
       return null;
     }
+  };
+
+  const addToCart = (product) => {
+    const newCart = [...cart, { ...product, count: 1 }];
+    setCart(newCart);
   };
 
   useEffect(() => {
@@ -31,7 +39,8 @@ const App = () => {
           <FaOpencart className='me-3' />
           Shopping Cart
         </h1>
-        <Products products={products} />
+        <Products products={ products } addToCart={ addToCart } />
+        <Cart show={ show } cart={ cart } setShow={ setShow } setCart={ setCart } />
       </div>
     </div>
   );

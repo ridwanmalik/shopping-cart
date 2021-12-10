@@ -1,3 +1,9 @@
+// Colors
+$greenBlueCrayola: #3f88c5;
+$primary: $greenBlueCrayola;
+$rossoCorsa: #d00000;
+$danger: $rossoCorsa;
+
 // Fonts
 $font-family-base: "Roboto", sans-serif; // Overriding Primary Font
 $headings-font-family: "Raleway", sans-serif;
@@ -22,8 +28,10 @@ $font-sizes: (
   6: $h6-font-size,
 );
 
+// Spacing
 $spacer: 1rem;
-$spacers: (0: 0,
+$spacers: (
+  0: 0,
   px: "1px",
   1: $spacer * 0.25,
   2: $spacer * 0.5,

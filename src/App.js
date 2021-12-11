@@ -2,6 +2,8 @@ import { FaOpencart } from "react-icons/fa"
 import { useEffect, useState } from "react"
 import Products from "./components/Products"
 import Cart from "./components/Cart"
+import store from "./store"
+import { Provider } from "react-redux"
 
 const App = () => {
   const [products, setProducts] = useState([])
@@ -50,16 +52,18 @@ const App = () => {
 
   return (
     <div className='app'>
-      <div className='container'>
-        <h1 className='mt-4 mb-12'>
-          <span className="text-primary">
-            <FaOpencart className='me-3' />
-          </span>
-          Shopping Cart
-        </h1>
-        <Products products={ products } addToCart={ addToCart } />
-        <Cart show={ show } cart={ cart } setShow={ setShow } removeFormCart={ removeFormCart } />
-      </div>
+      <Provider store={ store }>
+        <div className='container'>
+          <h1 className='mt-4 mb-12'>
+            <span className="text-primary">
+              <FaOpencart className='me-3' />
+            </span>
+            Shopping Cart
+          </h1>
+          <Products products={ products } addToCart={ addToCart } />
+          <Cart show={ show } cart={ cart } setShow={ setShow } removeFormCart={ removeFormCart } />
+        </div>
+      </Provider>
     </div>
   )
 }

@@ -2,7 +2,9 @@ import { FiShoppingCart } from "react-icons/fi"
 import { BiStar } from "react-icons/bi"
 import formatCurrency from "../util"
 import Modal from 'react-modal'
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { connect } from "react-redux"
+import { fetchProducts } from "../actions/productActions"
 
 const Products = ({ products, addToCart }) => {
   const [product, setProduct] = useState(null)
@@ -24,6 +26,12 @@ const Products = ({ products, addToCart }) => {
     addToCart(product)
     closeModal()
   }
+
+  useEffect(() => {
+    console.log("fetchProducts")
+    // debugger
+    fetchProducts()
+  }, [])
 
   return (
     <div className="">
@@ -72,7 +80,6 @@ const Products = ({ products, addToCart }) => {
           </div>
         </Modal>
       ) }
-      )}
     </div>
   )
 }
@@ -81,4 +88,6 @@ Products.defaultProps = {
   products: [],
 }
 
-export default Products
+export default connect((state) => ({ products: state.products.items }), {
+  fetchProducts,
+})(Products)

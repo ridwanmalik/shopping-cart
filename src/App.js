@@ -2,6 +2,10 @@ import { FaOpencart } from "react-icons/fa"
 import { useEffect, useState } from "react"
 import Products from "./components/Products"
 import Cart from "./components/Cart"
+import configureStore from './store/configureStore'
+import { fetchProducts } from './store/products'
+
+const store = configureStore()
 
 const App = () => {
   const [products, setProducts] = useState([])
@@ -45,7 +49,8 @@ const App = () => {
       const data = await fetchProduct()
       setProducts(data)
     }
-    getData()
+    // getData()
+    store.dispatch(fetchProducts())
   }, [])
 
   return (

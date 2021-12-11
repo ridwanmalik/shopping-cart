@@ -72,7 +72,6 @@ const Products = ({ products, addToCart }) => {
           </div>
         </Modal>
       ) }
-      )}
     </div>
   )
 }

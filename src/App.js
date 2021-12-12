@@ -3,11 +3,12 @@ import { useEffect, useState } from "react"
 import Products from "./components/Products"
 import Cart from "./components/Cart"
 import configureStore from './store/configureStore'
-import { fetchProducts } from './store/products'
+import { loadProducts } from "./store/products"
+
 
 const store = configureStore()
-
 const App = () => {
+  console.log("store", store.getState())
   const [products, setProducts] = useState([])
   const localCart = JSON.parse(localStorage.getItem("userCart"))
   const [cart, setCart] = useState(localCart ? localCart : [])
@@ -49,8 +50,9 @@ const App = () => {
       const data = await fetchProduct()
       setProducts(data)
     }
+    store.dispatch(loadProducts())
     // getData()
-    store.dispatch(fetchProducts())
+    // store.dispatch(fetchProducts())
   }, [])
 
   return (

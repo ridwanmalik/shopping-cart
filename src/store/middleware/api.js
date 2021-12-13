@@ -11,7 +11,6 @@ const api = ({ dispatch }) => next => async action => {
   next(action)
 
   try {
-    debugger
     const response = await axios.request({
       baseURL: process.env.REACT_APP_API_URL,
       url,

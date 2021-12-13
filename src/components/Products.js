@@ -3,6 +3,7 @@ import { BiStar } from "react-icons/bi"
 import formatCurrency from "../util"
 import Modal from 'react-modal'
 import { useState } from "react"
+import { connect } from "react-redux"
 
 const Products = ({ products, addToCart }) => {
   const [product, setProduct] = useState(null)
@@ -72,7 +73,6 @@ const Products = ({ products, addToCart }) => {
           </div>
         </Modal>
       ) }
-      )}
     </div>
   )
 }
@@ -81,4 +81,4 @@ Products.defaultProps = {
   products: [],
 }
 
-export default Products
+export default connect((state) => ({ products: state.entities.products.list }), {})(Products)

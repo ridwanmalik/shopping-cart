@@ -81,4 +81,4 @@ Products.defaultProps = {
   products: [],
 }
 
-export default connect((state) => ({ products: state.list }), {})(Products)
+export default connect((state) => ({ products: state.entities.products.list }), {})(Products)
